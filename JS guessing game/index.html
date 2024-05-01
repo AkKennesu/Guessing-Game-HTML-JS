@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Number Guessing Game</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1 user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+
+
+</head>
+
+<body>
+    <div class="game-container">
+    <div id="game">
+        <h1>Number Guessing Game</h1>
+        <div id="statusArea">
+            <p>Maglagay ng numero sa pagitan ng 1-100 at pindutin ang Enter o i-click ang Hulaan...</p>
+        </div>
+        <input type="number" id="userGuess" onkeydown="if(event.keyCode==13) userGuessed()" placeholder="Try your luck" style="text-align: center;">
+        <div class="button-container">
+        <div id="buttonArea" class="button" onclick="userGuessed()">Hulaan</div>
+        </div>
+        <div id="exitButton" onclick="exitGame()">Exit</div>
+        <div id="historyArea">
+            <h2>Iyong mga Naunang Hula</h2>
+            <ol id="historyList"></ol>
+        </div>
+        <div id="footerArea">
+            Visit me on <a href="https://github.com/AkKennesu" target="_blank">GitHub</a>.
+        </div>
+    </div>
+    </div>
+
+    <script>
+        var secretNumber = 0,
+            numberOfGuesses = 0;
+
+        function writeMessage(elementId, message, appendMessage) {
+            var elemToUpdate = document.getElementById(elementId);
+            if (appendMessage) {
+                elemToUpdate.innerHTML += message;
+            } else {
+                elemToUpdate.innerHTML = message;
+            }
+        };
+
+        function newGame() {
+            secretNumber = Math.floor(Math.random() * 100) + 1;
+            numberOfGuesses = 0;
+            writeMessage('historyList', '');
+            document.getElementById('historyArea').style.display = 'none';
+        }
+
+        function guessInRange(guess) {
+            return (guess > 0 && guess < 101);
+        }
+
+        function userGuessed() {
+            var userGuessed = document.getElementById('userGuess').value;
+            var statusArea = document.getElementById('statusArea');
+            var historyList = document.getElementById('historyList');
+            if (userGuessed.length == 0 || !guessInRange(userGuessed)) {
+                writeMessage('statusArea', '<p>maglagay ng numero 1-100 at pindutin ang Enter o i-click ang Hulaan.</p>');
+            } else if (userGuessed.indexOf('.') != -1) {
+                writeMessage('statusArea', '<p>maglagay ng buong numero 1-100 at pindutin ang Enter o i-click ang Hulaan.</p>');
+            } else {
+                numberOfGuesses++;
+
+                if (userGuessed == secretNumber) {
+                    writeMessage('statusArea', '<p>Mabuhay! Nakuha mo ang tamang sagot sa ika ' + numberOfGuesses + ' na subok, dahil ang tamang sagot ay ' + secretNumber + '. Subukan ulit ang laro....</p>');
+                    newGame();
+                } else if (userGuessed < secretNumber) {
+                    writeMessage('statusArea', '<p>Masyadong mababa! ang ' + userGuessed + ', Ulitin mo!</p>');
+                    writeMessage('historyList', '<li>' + userGuessed + ' (Masyadong Mababa!)</li>', true);
+                } else {
+                    writeMessage('statusArea', '<p>Masyadong mataas! ang ' + userGuessed + ', Ulitin mo!</p>');
+                    writeMessage('historyList', '<li>' + userGuessed + ' (Masyadong Mataas!)</li>', true);
+                }
+                document.getElementById('historyArea').style.display = 'block';
+            }
+
+            document.getElementById('userGuess').value = '';
+        }
+
+        window.onload = function () {
+            newGame();
+        };
+        function exitGame() {
+            var gameContainer = document.querySelector('.game-container');
+    gameContainer.innerHTML = '<h1>Thank You for Playing!</h1>' +
+        '<div class="extraButton-container">' +
+        '<div id="restartButton" class="restartButton" onclick="refreshWindow()">Restart Game</div>' +
+        '<div id="exitButton2" class="exitButton" onclick="window.close()">Exit Window</div>' +
+        '</div>';
+    }
+    function exitWindow() {
+        window.close();
+    }
+    function refreshWindow() {
+        location.reload();
+    }
+
+    </script>
+
+</body>
+
+</html>

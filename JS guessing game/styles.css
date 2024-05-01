@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+*{
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+	margin: 10px;
+	background-color: #303446;
+	font-family: Arial, sans-serif;
+}
+
+.button {
+    margin-top: 10px;
+    border-radius: 10px;
+    border-color: #000000;
+    background-color:rgba(108, 108, 239, 0.354);
+    border-style: solid;
+    border-width: 1px;
+    width: 25%;
+    padding: 5px;
+    text-align: center; 
+    font-weight: bold;
+    margin-left: 36.8%;
+  }
+
+#exitButton{
+  margin-top: 10px;
+    border-radius: 10px;
+    border-color: #000000;
+    background-color:rgba(199, 63, 63, 0.662);
+    border-style: solid;
+    border-width: 1px;
+    width: 25%;
+    padding: 5px;
+    text-align: center; 
+    font-weight: bold;
+    margin-left: 36.8%;
+}
+
+
+#userGuess {
+    border: 1px solid #cccccc;
+    border-radius: 10px;
+    padding: 5px 10px;
+    font-size: 16px;
+    border-color: #000000;
+}
+  
+#historyList{
+    text-align: center;
+    display: inline-block;
+}
+
+#historyArea {
+	margin-top: 10px;
+	padding-left: 5px;
+	padding-right: 5px;
+  display: none;
+}
+
+#game {
+    background-color: rgba(173, 168, 168, 0.601);
+    border-radius: 120px;
+    border-style: solid;
+    border-width: 100px;
+    border-color: #303446;
+    padding: 100px;
+    text-align: center;
+    width: 700px;
+    
+  }
+
+  .game-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  
+
+#statusArea {
+	font-size: 120%;
+}
+
+#footerArea {
+	text-align: center;
+	margin-top:5px;
+	font-size: 90%;
+	font-style: italic;
+}
+
+.game-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.exitButton{
+  margin-top: 10px;
+  border-radius: 10px;
+  border-color: #000000;
+  background-color:rgba(199, 63, 63, 0.662);
+  border-style: solid;
+  border-width: 1px;
+  width: 100%;
+  padding: 5px;
+  text-align: center; 
+  font-weight: bold;
+}
+
+.restartButton{
+  margin-top: 10px;
+  border-radius: 10px;
+  border-color: #000000;
+  background-color:rgba(61, 139, 61, 0.71);
+  border-style: solid;
+  border-width: 1px;
+  width: 100%;
+  padding: 5px;
+  text-align: center; 
+  font-weight: bold;
+}
